@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SmartCar Inventory — Customers & Reviews</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#94a3b8;--accent:#06b6d4;--glass:rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#e6eef6;
+    /* background:linear-gradient(180deg,#071124 0%, #07182a 60%); */
+    background: #7e1c1c;
+  }
+    .app{display:grid;grid-template-columns:360px 1fr;gap:20px;padding:28px;min-height:100vh}
+
+    /* Sidebar */
+    .sidebar{
+      /* background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent); */
+      background-image: url('https://i.pinimg.com/736x/72/37/61/723761fc81178605d47fd2a8361dfe83.jpg');
+      background-size: cover;
+      border-radius:12px;
+      padding:18px;
+      color:var(--muted);
+      backdrop-filter:blur(6px);
+      box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .brand{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:#071422;font-weight:700}
+    h1{font-size:16px;margin:0;color:#e6eef6}
+    p.sub{margin:6px 0 12px;font-size:13px;color:var(--muted)}
+
+    .search{display:flex;gap:8px;margin-bottom:12px}
+    .search input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid rgba(223, 216, 216, 0.877);background:var(--glass);color:#141414}
+    .search button{padding:10px 12px;border-radius:10px;border:none;background:var(--accent);color:#022;cursor:pointer}
+
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .chip{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-size:13px;color:var(--muted);cursor:pointer}
+    .chip.active{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#04121a;border:none}
+
+    .customers{display:grid;gap:10px;max-height:58vh;overflow:auto;padding-right:6px}
+    .customer{display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);cursor:pointer;border:1px solid rgba(255,255,255,0.02)}
+    .avatar{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:#2c070d;color:#bdecf6;font-weight:700}
+    .meta{flex:1}
+    .meta h3{margin:0;font-size:14px;color:#e7f9ff}
+    .meta p{margin:2px 0 0;font-size:12px;color:var(--muted)}
+
+    /* Main */
+    .main{display:flex;flex-direction:column;gap:18px}
+    .card{
+      /* background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent); */
+       background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210624/pngtree-red-black-gradient-solid-color-background-image_732506.jpg');
+      background-size: cover;
+      padding:18px;border-radius:12px;color:#eaf6ff;border:1px solid rgba(255,255,255,0.03)}
+    .topline{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .controls{display:flex;gap:8px;align-items:center}
+    .controls select,.controls input{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf6ff}
+
+    .details-grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .about{padding:12px;
+      /* background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent); */
+      background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210624/pngtree-red-black-gradient-solid-color-background-image_732506.jpg');
+      background-size: cover;
+      border-radius:10px
+    }
+    .about h2{margin:0 0 8px}
+    .kv{display:grid;grid-template-columns:140px 1fr;gap:8px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
+    .kv:last-child{border-bottom:none}
+    .kv b{color:#cfeffe}
+
+    /* Reviews */
+    .reviews-list{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+    .review{padding:12px;border-radius:10px;
+      background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210624/pngtree-red-black-gradient-solid-color-background-image_732506.jpg');
+      background-size: cover;
+      /* background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent); */
+      border:1px solid rgba(255,255,255,0.02)
+    }
+    .review h4{margin:0;font-size:14px;color:#eaf6ff}
+    .stars{display:inline-block;margin-left:8px;font-size:13px;color:#ffd166}
+    .review p{margin:8px 0 0;color:var(--muted);font-size:13px}
+    .review small{display:block;margin-top:8px;color:#7f98a8}
+
+    .add-review{display:grid;gap:8px;margin-top:12px}
+    textarea{min-height:84px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);
+      background:transparent;color:#eaf6ff;
+      background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210624/pngtree-red-black-gradient-solid-color-background-image_732506.jpg');
+      background-size: cover;
+    }
+    button.btn{padding:10px 12px;border-radius:8px;border:none;background:linear-gradient(90deg,var(--accent),#ed4f3a);color:#290202;cursor:pointer}
+
+    /* small screens */
+    @media (max-width:880px){.app{grid-template-columns:1fr;padding:16px}.details-grid{grid-template-columns:1fr}.sidebar{order:2}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Customers sidebar">
+      <div class="brand">
+        <div class="logo"><span>👥</span> </div>
+        <div>
+          <h1>CarSmart<img src="c:\Users\Gokulnath\Downloads\directions_car_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png">Inventory</h1>
+          <p class="sub">Customer directory & reviews</p>
+        </div>
+      </div>
+
+      <div class="search">
+        <input id="searchInput" placeholder="Search customers or email" aria-label="Search customers">
+        <button id="clearSearch" title="Clear">✖</button>
+      </div>
+
+      <div class="filters">
+        <div class="chip active" data-filter="all">All</div>
+        <div class="chip" data-filter="vip">VIP</div>
+        <div class="chip" data-filter="dealer">Dealers</div>
+        <div class="chip" data-filter="prospect">Prospects</div>
+      </div>
+
+      <div class="customers" id="customerList" role="list"></div>
+    </aside>
+
+    <main class="main">
+      <section class="card">
+        <div class="topline">
+          <div>
+            <h2 id="selectedName">Select a customer</h2>
+            <p id="selectedEmail" class="sub">Customer details will appear here</p>
+          </div>
+          <div class="controls">
+            <label for="sort">Sort:</label>
+            <select id="sort">
+              <option value="recent">Most Recent Review</option>
+              <option value="rating">Highest Rating</option>
+              <option value="name">Name A–Z</option>
+            </select>
+            <input id="ratingFilter" type="number" min="1" max="5" placeholder="Min rating" title="Filter reviews by minimum rating">
+          </div>
+        </div>
+
+        <div class="details-grid">
+          <div class="about card" id="aboutCard">
+            <h2>Customer profile</h2>
+            <div id="kvPairs"></div>
+            <h3 style="margin-top:12px">Notes</h3>
+            <p id="customerNotes" style="color:var(--muted);font-size:13px">Select a customer from the left to view their notes, purchase history and reviews.</p>
+          </div>
+
+          <aside class="card">
+            <h3>Reviews</h3>
+            <div id="reviews" class="reviews-list" aria-live="polite"></div>
+
+            <div class="add-review" aria-label="Add a review">
+              <label for="reviewerName">Your name</label>
+              <input id="reviewerName" placeholder="e.g. Maria" />
+              <label for="ratingInput">Rating (1-5)</label>
+              <input id="ratingInput" type="number" min="1" max="5" value="5">
+              <label for="reviewText">Review</label>
+              <textarea id="reviewText" placeholder="Write a helpful review..."></textarea>
+              <div style="display:flex;gap:8px;justify-content:flex-end">
+                <button class="btn" id="submitReview">Submit Review</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Activity & quick actions</h3>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+          <button class="chip" id="emailBtn">Send email</button>
+          <button class="chip" id="tagBtn">Add tag</button>
+          <button class="chip" id="exportBtn">Export reviews</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Sample data — replace with API calls in production
+    const customers = [
+      {id:1,name:'Asha Rao',email:'asha.rao@example.com',type:'vip',company:'Apex Motors',phone:'+91 98765 43210',notes:'Repeat buyer — prefers SUVs. Interested in subscription model.',joined:'2022-09-11',reviews:[{id:11,author:'Rajat',rating:5,text:'Excellent support, quick delivery.',date:'2024-08-12'},{id:12,author:'Asha Rao',rating:4,text:'Good car but minor paint issue solved quickly.',date:'2024-09-23'}]},
+      {id:2,name:'Jonah Patel',email:'jonah.patel@dealerco.com',type:'dealer',company:'DealerCo',phone:'+1 415 333 2222',notes:'Regional dealer for western region; bulk orders.',joined:'2021-03-05',reviews:[{id:21,author:'Jonah',rating:4,text:'Great inventory turnover.',date:'2025-01-03'}]},
+      {id:3,name:'Priya Iyer',email:'priya.iyer@prospects.com',type:'prospect',company:'',phone:'+91 91234 56789',notes:'Test drove two models. Follow-up scheduled.',joined:'2025-06-16',reviews:[]},
+      {id:4,name:'Liam Smith',email:'liam.smith@example.co.uk',type:'vip',company:'Private',phone:'+44 20 7946 0958',notes:'Interested in EVs and long-term leasing.',joined:'2020-11-20',reviews:[{id:41,author:'Liam',rating:5,text:'Love the EV lineup.',date:'2024-12-20'},{id:42,author:'Support',rating:5,text:'Priority account — handled exchange request smoothly.',date:'2025-03-18'}]}
+    ];
+
+    // Utilities
+    const el = id => document.getElementById(id);
+    const customerList = el('customerList');
+    const selectedName = el('selectedName');
+    const selectedEmail = el('selectedEmail');
+    const kvPairs = el('kvPairs');
+    const customerNotes = el('customerNotes');
+    const reviewsDiv = el('reviews');
+    const searchInput = el('searchInput');
+    const clearSearch = el('clearSearch');
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    const sortSelect = el('sort');
+    const ratingFilter = el('ratingFilter');
+
+    let activeFilter = 'all';
+    let selectedCustomer = null;
+
+    function formatDate(iso){
+      try{ return new Date(iso).toLocaleDateString(); }catch(e){return iso}
+    }
+
+    function renderCustomerList(filterText=''){
+      customerList.innerHTML='';
+      const list = customers.filter(c=>{
+        const matchesFilter = activeFilter==='all' || c.type===activeFilter;
+        const matchesText = (c.name+c.email+c.company).toLowerCase().includes(filterText.toLowerCase());
+        return matchesFilter && matchesText;
+      }).sort((a,b)=>a.name.localeCompare(b.name));
+
+      list.forEach(c=>{
+        const div = document.createElement('div');
+        div.className='customer';
+        div.tabIndex=0;
+        div.innerHTML=`
+          <div class="avatar">${initials(c.name)}</div>
+          <div class="meta">
+            <h3>${c.name}</h3>
+            <p>${c.email}</p>
+          </div>
+        `;
+        div.addEventListener('click',()=>selectCustomer(c.id));
+        div.addEventListener('keydown',e=>{ if(e.key==='Enter') selectCustomer(c.id)});
+        customerList.appendChild(div);
+      });
+
+      if(!list.length){
+        customerList.innerHTML='<p style="color:var(--muted);padding:8px">No customers found.</p>'
+      }
+    }
+
+    function initials(name){
+      return name.split(' ').map(n=>n[0]).slice(0,2).join('').toUpperCase();
+    }
+
+    function selectCustomer(id){
+      selectedCustomer = customers.find(c=>c.id===id);
+      if(!selectedCustomer) return;
+      selectedName.textContent = selectedCustomer.name;
+      selectedEmail.textContent = selectedCustomer.email;
+
+      kvPairs.innerHTML = '';
+      const fields = ['company','phone','type','joined'];
+      fields.forEach(k=>{
+        const row = document.createElement('div');
+        row.className='kv';
+        row.innerHTML = `<b>${k.charAt(0).toUpperCase()+k.slice(1)}</b><div>${selectedCustomer[k]||'—'}</div>`;
+        kvPairs.appendChild(row);
+      });
+
+      customerNotes.textContent = selectedCustomer.notes || '—';
+      renderReviews();
+    }
+
+    function renderReviews(){
+      reviewsDiv.innerHTML='';
+      if(!selectedCustomer) return;
+      let list = Array.from(selectedCustomer.reviews || []);
+
+      // filters
+      const minRating = parseInt(ratingFilter.value) || 0;
+      list = list.filter(r=>r.rating>=minRating);
+
+      // sort
+      const sort = sortSelect.value;
+      if(sort==='rating') list.sort((a,b)=>b.rating-a.rating);
+      else if(sort==='recent') list.sort((a,b)=>new Date(b.date)-new Date(a.date));
+      else if(sort==='name') list.sort((a,b)=>a.author.localeCompare(b.author));
+
+      if(!list.length){
+        reviewsDiv.innerHTML='<p style="color:var(--muted)">No reviews yet for this customer.</p>';
+        return;
+      }
+
+      list.forEach(r=>{
+        const d = document.createElement('div'); d.className='review';
+        d.innerHTML = `<h4>${escapeHtml(r.author)} <span class="stars">${renderStars(r.rating)}</span></h4>
+                       <p>${escapeHtml(r.text)}</p>
+                       <small>${formatDate(r.date)}</small>`;
+        reviewsDiv.appendChild(d);
+      });
+    }
+
+    function renderStars(n){
+      const full = '★'.repeat(Math.max(0,Math.min(5,n)));
+      const empty = '☆'.repeat(5-Math.max(0,Math.min(5,n)));
+      return full+empty;
+    }
+
+    // Add review
+    document.getElementById('submitReview').addEventListener('click',()=>{
+      if(!selectedCustomer){alert('Select a customer first');return}
+      const author = document.getElementById('reviewerName').value.trim()||'Anonymous';
+      const rating = parseInt(document.getElementById('ratingInput').value) || 5;
+      const text = document.getElementById('reviewText').value.trim();
+      if(!text){ alert('Please write a short review'); return }
+      const newReview = {id:Date.now(),author,rating,text,date:new Date().toISOString().slice(0,10)};
+      selectedCustomer.reviews = selectedCustomer.reviews || [];
+      selectedCustomer.reviews.push(newReview);
+      // optimistic UI update
+      document.getElementById('reviewerName').value='';
+      document.getElementById('reviewText').value='';
+      document.getElementById('ratingInput').value=5;
+      renderReviews();
+    });
+
+    // Search & filters
+    searchInput.addEventListener('input',e=>renderCustomerList(e.target.value));
+    clearSearch.addEventListener('click',()=>{searchInput.value='';renderCustomerList('')});
+
+    chips.forEach(ch=>ch.addEventListener('click',e=>{
+      chips.forEach(c=>c.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      activeFilter = e.currentTarget.dataset.filter;
+      renderCustomerList(searchInput.value);
+    }));
+
+    sortSelect.addEventListener('change',renderReviews);
+    ratingFilter.addEventListener('input',renderReviews);
+
+    // Quick actions (stubbed)
+    document.getElementById('emailBtn').addEventListener('click',()=>{
+      if(!selectedCustomer) return alert('Select a customer first');
+      alert('Compose email to '+selectedCustomer.email+' (this is a demo stub)');
+    });
+    document.getElementById('tagBtn').addEventListener('click',()=>{alert('Add tag — UI action (stub)')});
+    document.getElementById('exportBtn').addEventListener('click',()=>{
+      if(!selectedCustomer) return alert('Select a customer first');
+      const payload = JSON.stringify(selectedCustomer.reviews || [], null, 2);
+      // download as file
+      const blob = new Blob([payload],{type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = selectedCustomer.name.replace(/\s+/g,'_')+'_reviews.json';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    // Sanitizer
+    function escapeHtml(s){ return (s+'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"})[c]); }
+
+    // init
+    renderCustomerList();
+    // preselect first customer
+    if(customers.length) selectCustomer(customers[0].id);
+  </script>
+</body>
+</html>

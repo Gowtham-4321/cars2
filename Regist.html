@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Smart Car Inventory</title>
+  <link rel="stylesheet" href="css/register.css" />
+</head>
+<body>
+
+
+    <div class="container1">
+<div class="image-section">
+      <div class="image-overlay"></div>
+      <div class="image-text"></div>
+    </div>
+
+  <div class="container">
+    <div class="form-box">
+      <h1>CarSMarT <img src="c:\Users\Gokulnath\Downloads\directions_car_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png"> Inventory</h1><br>
+      <!-- <h2>Create Your Account</h2> -->
+      <form id="registerForm">
+        <div class="input-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" placeholder="Enter your full name" required />
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" required />
+        </div>
+
+        <div class="input-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Re-enter password" required />
+        </div>
+
+        <button type="submit">Register</button>
+
+        <a href="cars2.html" class="back-link">← Back to Home</a><br>
+			
+			<div class="extra-links mt-3">
+			      <a href="#">Forgot Password?</a><br>
+			      <a href="#">Create Account</a>
+			    </div>
+	        <p id="message"></p>
+        
+
+        <!-- <p class="login-link">
+          Already have an account? <a href="CarLog.html">Login here</a>
+        </p> -->
+      </form>
+    </div>
+  </div>
+
+  <script src="js/register.js"></script>
+
+  <style>
+   
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  /* background: linear-gradient(135deg, #2575fc, #6a11cb); */
+  background-color: rgb(139, 53, 53);
+   height: 110vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.container1 {
+      display: flex;
+      width: 68%;
+      margin:auto;
+    }
+
+    .image-section {
+      flex: 1;
+      background: url('https://i.pinimg.com/736x/6f/1f/cc/6f1fcc542eae9e4eddac2b198a18e400.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border-radius: 5px;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.20);
+  transition: background 0.4s ease;;
+    }
+    
+   
+
+.image-overlay:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+.container {
+      width: 90%;
+      max-width: 420px;
+      /* background:#55425c; */
+      background: rgb(226, 209, 210);
+      padding: 13px;
+      border-radius: 5px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+      color: #fff
+}
+
+.form-box {
+   background: linear-gradient(135deg,#582525,  #b13434);
+  /* background-image: url('https://skdrivers.my.canva.site/images/f8a4dbcf8d996f54871b9cf7d31b60a9.png');
+  background-size: cover; */
+  justify-content: center;
+  padding: 2rem 2.5rem;
+  border-radius: 1.1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1 {
+  color: #ceb8bb;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+
+
+h2 {
+  color: #e2d8d8;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: #ddd4d4;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #4b3c52;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 0.8rem;
+  
+  border: none;
+  /*background: rgb(73, 65, 75); */
+  background: #e24451;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #eb7f86;
+   color: black;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 16px;
+  color: #dce7e7;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #c8d2dd;
+  text-decoration: underline;
+}
+
+.extra-links {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.extra-links a {
+  color: #b2f3ea;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.extra-links a:hover {
+  color: #bcc6d1;
+  text-decoration: underline;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+
+#message {
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.login-link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.login-link a {
+color:#dfd7d7;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  /* text-decoration: underline; */
+  color: #0d0d0e;
+}
+
+  </style>
+
+
+<script>
+  document.getElementById("registerForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const fullName = document.getElementById("fullName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+  const message = document.getElementById("message");
+
+  // Simple front-end validation
+  if (!fullName || !email || !password || !confirmPassword) {
+    message.textContent = "Please fill in all fields.";
+    message.style.color = "red";
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    message.textContent = "Please enter a valid email.";
+    message.style.color = "red";
+    return;
+  }
+
+  if (password.length < 6) {
+    message.textContent = "Password must be at least 6 characters long.";
+    message.style.color = "red";
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    message.textContent = "Passwords do not match.";
+    message.style.color = "red";
+    return;
+  }
+
+  // If all checks pass, simulate registration success
+  message.textContent = "Registration successful! Redirecting...";
+  message.style.color = "green";
+
+  // Simulate backend call (e.g., Spring Boot API later)
+  setTimeout(() => {
+    window.location.href = "view.html";
+  }, 1500);
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- //https://img.freepik.com/free-photo/night-drive_23-2151955578.jpg?semt=ais_incoming&w=740&q=80 -->

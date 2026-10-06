@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CARSMART - Settings</title>
+<link rel="stylesheet" th:href="@{/css/Setting.css}">
+</head>
+
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-top">
+
+        <h2>CarSmart<img src="c:\Users\Gokulnath\Downloads\directions_car_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png">Inventory</h2>
+
+        <nav>
+
+            <a href="dash.html" >
+                <span>🏠</span>
+                <span class="menu-text" >Dashboard</span>
+                 
+            </a>
+
+            <a href="Inv.html">
+                <span>➕</span>
+                <span class="menu-text">Add Car</span>
+            </a>
+
+            <a href="Customer.html">
+                <span>🚘</span>
+                <span class="menu-text">Customers</span>
+            </a>
+
+            <a href="reports.html">
+                <span>📊</span>
+                <span class="menu-text">Reports</span>
+            </a>
+
+            <a href="Setting.html" class="active">
+                <span>⚙️</span>
+                <span class="menu-text">Settings</span>
+            </a>
+
+        </nav>
+
+    </div>
+
+
+    <div class="logout">
+
+        <a href="CarLog.html" class="btn">
+            <span>🚪</span>
+            <span class="menu-text">Logout</span>
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <h2><span>⚙️</span> Settings</h2>
+
+        <div class="admin">
+
+            <div>
+                <strong>Admin</strong>
+                <!-- <small>Administrator</small> -->
+            </div>
+
+            <img
+                src="https://png.pngtree.com/png-vector/20220628/ourmid/pngtree-user-profile-avatar-vector-admin-png-image_5289693.png"
+                alt="Admin">
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTENT -->
+
+    <section class="content">
+
+        <div class="page-heading">
+
+            <div>
+
+               
+
+                <p>
+                    Manage your CARSMART account and dealership preferences.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUCCESS MESSAGE -->
+
+        <div id="successMessage" class="success-message">
+            ✓ Settings saved successfully.
+        </div>
+
+
+        <form id="settingsForm">
+
+
+            <!-- ================= PROFILE ================= -->
+
+            <div class="settings-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon">👤</div>
+
+                    <div>
+                        <h2>Profile Settings</h2>
+                        <p>Manage your administrator information.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Full Name</label>
+
+                        <input
+                            type="text"
+                            id="adminName"
+                            name="adminName"
+                            value="Admin"
+                            placeholder="Enter your name">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Email Address</label>
+
+                        <input
+                            type="email"
+                            id="adminEmail"
+                            name="adminEmail"
+                            value="admin@carsmart.com"
+                            placeholder="Enter email">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Phone Number</label>
+
+                        <input
+                            type="tel"
+                            id="adminPhone"
+                            name="adminPhone"
+                            value="+91 9876543210"
+                            placeholder="Enter phone number">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Role</label>
+
+                        <input
+                            type="text"
+                            value="Administrator"
+                            disabled>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= DEALERSHIP ================= -->
+
+            <div class="settings-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon">🏢</div>
+
+                    <div>
+                        <h2>Dealership Settings</h2>
+                        <p>Configure your dealership information.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Dealership Name</label>
+
+                        <input
+                            type="text"
+                            id="dealerName"
+                            name="dealerName"
+                            value="CARSMART Motors">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Location</label>
+
+                        <input
+                            type="text"
+                            id="dealerLocation"
+                            name="dealerLocation"
+                            value="Mumbai, India">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Contact Email</label>
+
+                        <input
+                            type="email"
+                            id="dealerEmail"
+                            name="dealerEmail"
+                            value="contact@carsmart.com">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Currency</label>
+
+                        <select
+                            id="currency"
+                            name="currency">
+
+                            <option value="USD">USD - US Dollar</option>
+                            <option value="INR">INR - Indian Rupee</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="GBP">GBP - British Pound</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= NOTIFICATIONS ================= -->
+
+            <div class="settings-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon">🔔</div>
+
+                    <div>
+                        <h2>Notifications</h2>
+                        <p>Choose which alerts you want to receive.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="toggle-list">
+
+
+                    <div class="toggle-item">
+
+                        <div>
+
+                            <strong>Email Notifications</strong>
+
+                            <p>
+                                Receive important system notifications.
+                            </p>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="emailNotifications"
+                                checked>
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="toggle-item">
+
+                        <div>
+
+                            <strong>New Car Alerts</strong>
+
+                            <p>
+                                Get notified when a new vehicle is added.
+                            </p>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="newCarAlerts"
+                                checked>
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="toggle-item">
+
+                        <div>
+
+                            <strong>Low Inventory Alerts</strong>
+
+                            <p>
+                                Receive alerts when inventory becomes low.
+                            </p>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="lowInventoryAlerts">
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= APPEARANCE ================= -->
+
+            <div class="settings-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon">🎨</div>
+
+                    <div>
+                        <h2>Appearance</h2>
+                        <p>Customize the CARSMART interface.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="appearance-options">
+
+                    <div class="appearance-item">
+
+                        <div>
+
+                            <strong>Compact Mode</strong>
+
+                            <p>
+                                Reduce spacing between interface elements.
+                            </p>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="compactMode">
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="appearance-item">
+
+                        <div>
+
+                            <strong>Dark Mode</strong>
+
+                            <p>
+                                Use a dark interface for the settings page.
+                            </p>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="darkMode">
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= SECURITY ================= -->
+
+            <div class="settings-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon">🔐</div>
+
+                    <div>
+
+                        <h2>Security</h2>
+
+                        <p>
+                            Change your administrator password.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Current Password</label>
+
+                        <input
+                            type="password"
+                            id="currentPassword"
+                            placeholder="Current password">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>New Password</label>
+
+                        <input
+                            type="password"
+                            id="newPassword"
+                            placeholder="New password">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Confirm Password</label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm password">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ACTIONS ================= -->
+
+            <div class="settings-actions">
+
+                <button
+                    type="button"
+                    class="reset-btn"
+                    onclick="resetSettings()">
+
+                    Reset
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+                    💾 Save Changes
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </section>
+
+</main>
+
+<style>
+	* {
+	    margin: 0;
+	    padding: 0;
+	    box-sizing: border-box;
+	}
+
+	body {
+	    font-family: Arial, Helvetica, sans-serif;
+	    height: 100vh;
+
+	    display: flex;
+
+	    overflow: hidden;
+
+	    color: white;
+
+	    background: white;
+
+	    transition: 0.3s;
+	}
+
+
+	/* ================= SIDEBAR ================= */
+
+	.sidebar {
+	    width: 290px;
+	    height: 120%;
+
+	    flex-shrink: 0;
+
+	    /* background:
+	        linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)),
+	        url("https://img.freepik.com/premium-photo/new-car-is-road-dark_662214-107209.jpg"); */
+
+			/* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAkUIHUFB1aOpcG1fiyXXRDOkyZZHi6jRpDW860FSBPA&s=10');
+      background-size: cover; */
+         background: linear-gradient(90deg, #be3c3c, #3d0b12);
+	    
+	    background-position: center;
+
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-between;
+	}
+
+	.sidebar-top h2 {
+	    color: #a5afb1;
+	    padding: 25px 20px;
+	    font-size: 1.5rem;
+	}
+
+	.sidebar nav {
+	    display: flex;
+	    flex-direction: column;
+	}
+
+	.sidebar nav a,
+	.logout a {
+	    text-decoration: none;
+	    color: #8d8484;
+        height:40px;
+	    padding: 16px 25px;
+
+	    font-weight: bold;
+
+	    display: flex;
+	    align-items: center;
+
+	    gap: 15px;
+
+	    transition: 0.3s;
+	}
+
+	.sidebar nav a:hover,
+	.sidebar nav a.active {
+	    color: #00bcd4;
+	    background: rgba(0, 188, 212, 0.1);
+	}
+
+	.logout {
+	    border-top: 1px solid rgba(0, 188, 212, 0.3);
+	    background: #00bcd41a;
+		height:22%;
+	}
+
+	.logout a {
+	    color: #00bcd4;
+	}
+
+
+	/* ================= MAIN ================= */
+
+	.main {
+	    flex: 1;
+
+	    height: 100vh;
+
+	    overflow-y: auto;
+
+	    background: white;
+	}
+
+
+	/* ================= TOPBAR ================= */
+
+	.topbar {
+	    height: 75px;
+
+	    padding: 15px 30px;
+
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-between;
+
+	   background: linear-gradient(90deg, #be3c3c, #3d0b12);
+
+		/* background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210624/pngtree-red-black-gradient-solid-color-background-image_732506.jpg');
+      background-size: cover; */
+      
+
+	    border-bottom: 1px solid #ddd;
+
+	    backdrop-filter: blur(10px);
+	}
+
+	.topbar h1 {
+	    color: #00bcd4;
+	    font-size: 1.7rem;
+	}
+
+	.admin {
+	    display: flex;
+	    align-items: center;
+	    gap: 12px;
+
+	    color: #e2d5d5;
+	}
+
+	.admin div {
+	    display: flex;
+	    flex-direction: column;
+	    align-items: flex-end;
+	}
+
+	.admin small {
+	    color: #888;
+	    margin-top: 3px;
+	}
+
+	.admin img {
+	    width: 45px;
+	    height: 45px;
+
+	    object-fit: cover;
+
+	    border-radius: 50%;
+	}
+
+
+	/* ================= CONTENT ================= */
+
+	.content {
+	    min-height: calc(100vh - 75px);
+
+	    padding: 30px;
+
+	    background: white;
+
+		/* background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20201203/pngtree-red-halftone-polka-dot-background-image_501166.jpg');
+      background-size: cover; */
+      
+	}
+
+	.page-heading {
+	    margin-bottom: 25px;
+	}
+
+	.page-heading h2 {
+	    color: #222;
+	    margin-bottom: 6px;
+	}
+
+	.page-heading p {
+	    color: #181010;
+	}
+
+
+	/* ================= SUCCESS ================= */
+
+	.success-message {
+	    display: none;
+
+	    background: #00bcd41c;
+
+	    border: 1px solid #00bcd4;
+
+	    color: #008da0;
+
+	    padding: 13px 18px;
+
+	    border-radius: 7px;
+
+	    margin-bottom: 20px;
+	}
+
+	.success-message.show {
+	    display: block;
+	}
+
+
+	/* ================= SETTINGS CARD ================= */
+
+	.settings-card {
+	   background: linear-gradient(90deg, #be3c3c, #3d0b12);
+
+		/* background-image: url('https://www.shutterstock.com/image-illustration/dynamic-red-light-trails-on-260nw-2756612993.jpg');
+      background-size: cover; */
+
+	    padding: 28px;
+
+	    border-radius: 10px;
+
+	    margin-bottom: 22px;
+
+	    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+
+	    transition: 0.3s;
+	}
+
+	.settings-card:hover {
+	    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.12);
+	}
+
+
+	/* ================= CARD HEADING ================= */
+
+	.card-heading {
+	    display: flex;
+	    align-items: center;
+
+	    gap: 15px;
+
+	    margin-bottom: 25px;
+
+	    padding-bottom: 18px;
+
+	    border-bottom: 1px solid #334448;
+	}
+
+	.card-icon {
+	    width: 45px;
+	    height: 45px;
+
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+
+	    border-radius: 8px;
+
+	    background: #00bcd41a;
+
+	    font-size: 1.4rem;
+	}
+
+	.card-heading h2 {
+	    color: #00bcd4;
+	    font-size: 1.2rem;
+
+	    margin-bottom: 5px;
+	}
+
+	.card-heading p {
+	    color: #999;
+	    font-size: 0.85rem;
+	}
+
+
+	/* ================= FORM ================= */
+
+	.form-grid {
+	    display: grid;
+
+	    grid-template-columns: repeat(2, 1fr);
+
+	    gap: 20px;
+	}
+
+	.form-group {
+	    display: flex;
+	    flex-direction: column;
+
+	    gap: 8px;
+	}
+
+	.form-group label {
+	    color: #ccc;
+
+	    font-size: 0.85rem;
+
+	    font-weight: bold;
+	}
+
+	.form-group input,
+	.form-group select {
+	    width: 100%;
+
+	    padding: 12px 14px;
+
+	    border-radius: 6px;
+
+	    border: 1px solid #414f52;
+
+	    background: #17292c;
+
+	    color: white;
+
+	    outline: none;
+
+	    transition: 0.3s;
+	}
+
+	.form-group input:focus,
+	.form-group select:focus {
+	    border-color: #00bcd4;
+
+	    box-shadow: 0 0 0 2px #00bcd41a;
+	}
+
+	.form-group input:disabled {
+	    color: #777;
+	    cursor: not-allowed;
+	}
+
+
+	/* ================= TOGGLE ================= */
+
+	.toggle-list,
+	.appearance-options {
+	    display: flex;
+	    flex-direction: column;
+	}
+
+	.toggle-item,
+	.appearance-item {
+	    display: flex;
+
+	    align-items: center;
+	    justify-content: space-between;
+
+	    padding: 18px 0;
+
+	    border-bottom: 1px solid #334448;
+	}
+
+	.toggle-item:last-child,
+	.appearance-item:last-child {
+	    border-bottom: none;
+	}
+
+	.toggle-item strong,
+	.appearance-item strong {
+	    color: #eee;
+
+	    display: block;
+
+	    margin-bottom: 5px;
+	}
+
+	.toggle-item p,
+	.appearance-item p {
+	    color: #888;
+
+	    font-size: 0.83rem;
+	}
+
+
+	/* ================= SWITCH ================= */
+
+	.switch {
+	    position: relative;
+
+	    width: 48px;
+	    height: 25px;
+
+	    flex-shrink: 0;
+	}
+
+	.switch input {
+	    display: none;
+	}
+
+	.slider {
+	    position: absolute;
+
+	    inset: 0;
+
+	    background: #555;
+
+	    border-radius: 30px;
+
+	    cursor: pointer;
+
+	    transition: 0.3s;
+	}
+
+	.slider::before {
+	    content: "";
+
+	    position: absolute;
+
+	    width: 19px;
+	    height: 19px;
+
+	    left: 3px;
+	    top: 3px;
+
+	    background: white;
+
+	    border-radius: 50%;
+
+	    transition: 0.3s;
+	}
+
+	.switch input:checked + .slider {
+	    background: #00bcd4;
+	}
+
+	.switch input:checked + .slider::before {
+	    transform: translateX(23px);
+	}
+
+
+	/* ================= ACTIONS ================= */
+
+	.settings-actions {
+	    display: flex;
+
+	    justify-content: flex-end;
+
+	    gap: 12px;
+
+	    margin-top: 10px;
+
+	    margin-bottom: 30px;
+	}
+
+	.settings-actions button {
+	    border: none;
+
+	    padding: 12px 22px;
+
+	    border-radius: 6px;
+
+	    cursor: pointer;
+
+	    font-weight: bold;
+
+	    transition: 0.3s;
+	}
+
+	.save-btn {
+	     background: linear-gradient(90deg, #be3c3c, #3d0b12);
+	    color: white;
+	}
+
+	.reset-btn {
+	  background: linear-gradient(90deg, #be3c3c, #3d0b12);
+	    color: #a39999;
+	}
+
+	.settings-actions button:hover {
+	    transform: translateY(-2px);
+	    opacity: 0.9;
+	}
+
+
+	/* ================= DARK MODE ================= */
+
+	body.dark-mode,
+	body.dark-mode .main,
+	body.dark-mode .content {
+	    background: #10191b;
+	}
+
+	body.dark-mode .topbar {
+	    background: #162326;
+	    border-color: #26383b;
+	}
+
+	body.dark-mode .page-heading h2 {
+	    color: white;
+	}
+
+	body.dark-mode .page-heading p {
+	    color: #aaa;
+	}
+
+
+	/* ================= COMPACT MODE ================= */
+
+	body.compact-mode .settings-card {
+	    padding: 18px;
+	    margin-bottom: 12px;
+	}
+
+	body.compact-mode .form-grid {
+	    gap: 12px;
+	}
+
+	body.compact-mode .toggle-item,
+	body.compact-mode .appearance-item {
+	    padding: 11px 0;
+	}
+
+
+	/* ================= RESPONSIVE ================= */
+
+	@media (max-width: 900px) {
+
+	    .form-grid {
+	        grid-template-columns: 1fr;
+	    }
+
+	}
+
+
+	@media (max-width: 768px) {
+
+	    .sidebar {
+	        width: 70px;
+	    }
+
+	    .sidebar-top h2 {
+	        font-size: 0;
+
+	        text-align: center;
+
+	        padding: 25px 5px;
+	    }
+
+	    .menu-text {
+	        display: none;
+	    }
+
+	    .sidebar nav a,
+	    .logout a {
+	        justify-content: center;
+	        padding: 17px 5px;
+	    }
+
+	    .topbar h1 {
+	        font-size: 1.3rem;
+	    }
+
+	    .admin div {
+	        display: none;
+	    }
+
+	    .content {
+	        padding: 20px;
+	    }
+
+	}
+
+
+	@media (max-width: 480px) {
+
+	    .topbar {
+	        padding: 15px 20px;
+	    }
+
+	    .content {
+	        padding: 15px;
+	    }
+
+	    .settings-card {
+	        padding: 20px;
+	    }
+
+	    .card-heading {
+	        align-items: flex-start;
+	    }
+
+	    .toggle-item,
+	    .appearance-item {
+	        gap: 15px;
+	    }
+
+	    .settings-actions {
+	        flex-direction: column;
+	    }
+
+	    .settings-actions button {
+	        width: 100%;
+	    }
+
+	}
+</style>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+
+	    loadSettings();
+
+	    setupTheme();
+
+	});
+
+
+	/* ================= FORM ================= */
+
+	const settingsForm =
+	    document.getElementById("settingsForm");
+
+
+	settingsForm.addEventListener("submit", function (event) {
+
+	    event.preventDefault();
+
+	    const newPassword =
+	        document.getElementById("newPassword").value;
+
+	    const confirmPassword =
+	        document.getElementById("confirmPassword").value;
+
+
+	    if (newPassword !== "" && newPassword !== confirmPassword) {
+
+	        alert("New password and confirm password do not match.");
+
+	        return;
+
+	    }
+
+
+	    saveSettings();
+
+	    showSuccess();
+
+	});
+
+
+	/* ================= SAVE ================= */
+
+	function saveSettings() {
+
+	    const settings = {
+
+	        adminName:
+	            document.getElementById("adminName").value,
+
+	        adminEmail:
+	            document.getElementById("adminEmail").value,
+
+	        adminPhone:
+	            document.getElementById("adminPhone").value,
+
+	        dealerName:
+	            document.getElementById("dealerName").value,
+
+	        dealerLocation:
+	            document.getElementById("dealerLocation").value,
+
+	        dealerEmail:
+	            document.getElementById("dealerEmail").value,
+
+	        currency:
+	            document.getElementById("currency").value,
+
+	        emailNotifications:
+	            document.getElementById("emailNotifications").checked,
+
+	        newCarAlerts:
+	            document.getElementById("newCarAlerts").checked,
+
+	        lowInventoryAlerts:
+	            document.getElementById("lowInventoryAlerts").checked,
+
+	        compactMode:
+	            document.getElementById("compactMode").checked,
+
+	        darkMode:
+	            document.getElementById("darkMode").checked
+
+	    };
+
+
+	    localStorage.setItem(
+	        "carsmartSettings",
+	        JSON.stringify(settings)
+	    );
+
+
+	    applyAppearance(settings);
+
+	}
+
+
+	/* ================= LOAD ================= */
+
+	function loadSettings() {
+
+	    const saved =
+	        localStorage.getItem("carsmartSettings");
+
+
+	    if (!saved) {
+	        return;
+	    }
+
+
+	    const settings =
+	        JSON.parse(saved);
+
+
+	    document.getElementById("adminName").value =
+	        settings.adminName || "Admin";
+
+	    document.getElementById("adminEmail").value =
+	        settings.adminEmail || "admin@carsmart.com";
+
+	    document.getElementById("adminPhone").value =
+	        settings.adminPhone || "";
+
+	    document.getElementById("dealerName").value =
+	        settings.dealerName || "CARSMART Motors";
+
+	    document.getElementById("dealerLocation").value =
+	        settings.dealerLocation || "";
+
+	    document.getElementById("dealerEmail").value =
+	        settings.dealerEmail || "";
+
+	    document.getElementById("currency").value =
+	        settings.currency || "USD";
+
+
+	    document.getElementById("emailNotifications").checked =
+	        settings.emailNotifications ?? true;
+
+	    document.getElementById("newCarAlerts").checked =
+	        settings.newCarAlerts ?? true;
+
+	    document.getElementById("lowInventoryAlerts").checked =
+	        settings.lowInventoryAlerts ?? false;
+
+	    document.getElementById("compactMode").checked =
+	        settings.compactMode ?? false;
+
+	    document.getElementById("darkMode").checked =
+	        settings.darkMode ?? false;
+
+
+	    applyAppearance(settings);
+
+	}
+
+
+	/* ================= APPEARANCE ================= */
+
+	function setupTheme() {
+
+	    document
+	        .getElementById("darkMode")
+	        .addEventListener("change", function () {
+
+	            document.body.classList.toggle(
+	                "dark-mode",
+	                this.checked
+	            );
+
+	        });
+
+
+	    document
+	        .getElementById("compactMode")
+	        .addEventListener("change", function () {
+
+	            document.body.classList.toggle(
+	                "compact-mode",
+	                this.checked
+	            );
+
+	        });
+
+	}
+
+
+	function applyAppearance(settings) {
+
+	    document.body.classList.toggle(
+	        "dark-mode",
+	        settings.darkMode
+	    );
+
+	    document.body.classList.toggle(
+	        "compact-mode",
+	        settings.compactMode
+	    );
+
+	}
+
+
+	/* ================= SUCCESS MESSAGE ================= */
+
+	function showSuccess() {
+
+	    const message =
+	        document.getElementById("successMessage");
+
+	    message.classList.add("show");
+
+
+	    setTimeout(() => {
+
+	        message.classList.remove("show");
+
+	    }, 3000);
+
+	}
+
+
+	/* ================= RESET ================= */
+
+	function resetSettings() {
+
+	    const confirmed =
+	        confirm(
+	            "Are you sure you want to reset the settings?"
+	        );
+
+
+	    if (!confirmed) {
+	        return;
+	    }
+
+
+	    localStorage.removeItem("carsmartSettings");
+
+	    location.reload();
+
+	}
+	
+</script>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script th:src="@{/js/Setting.js}"></script>
+
+</body>
+
+</html>
