@@ -4,6 +4,252 @@
     <title>Cars</title>
 </head>
 <body>
-    <h1>My Cars Website</h1>
+  
+    <style>
+   
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #0f1115;
+      color: white;
+      overflow-x: hidden;
+    }
+	
+	h1 {
+	  font-family: 'Poppins', sans-serif;
+	  font-size: 3rem;
+	  color: white;
+	  text-align: center;
+	  margin-bottom: 2rem;
+	  text-shadow: 0 0 15px rgba(221, 137, 141, 0.8);
+	}
+
+  h1 img{
+   background-color: #bd4d5f;
+  }
+
+  .hero-btn1{
+    display: inline-block;
+	  margin: 10px;
+    margin-left: 43%;
+     padding: 12px 30px;
+	  font-size: 1.1rem;
+	  font-weight: 600;
+	  color: #fff;
+	  background: linear-gradient(90deg, #9b6262, #e94b53);
+	  border: none;
+	  border-radius: 30px;
+	  cursor: pointer;
+	  transition: all 0.3s ease;
+	  box-shadow:0 0 15px rgba(221, 137, 141, 0.8);;
+	  text-transform: uppercase;
+
+  }
+
+  .hero-btn1 a {
+	  text-decoration: none;
+	  color: inherit;
+	  display: inline-block;
+	}
+
+	.hero-btn1:hover {
+	  transform: scale(1.07);
+	  /* box-shadow: 0 0 30px rgba(102, 16, 242, 0.8), 0 0 60px rgba(13, 110, 253, 0.6); */
+    box-shadow: 0 0 30px rgba(221, 100, 126, 0.8), 0 0 60px rgba(235, 93, 93, 0.6);
+	  /* background: linear-gradient(90deg, #6610f2, #0d6efd); */
+     background: linear-gradient(90deg, #ec2a4a, #d365bb);
+	}
+
+	.hero-btn {
+	  display: inline-block;
+	  /* margin: 10px; */
+     padding: 12px 30px;
+	  font-size: 1.1rem;
+	  font-weight: 600;
+	  color: #fff;
+	  background: linear-gradient(90deg, #9b6262, #e94b53);
+	  border: none;
+	  border-radius: 30px;
+	  cursor: pointer;
+	  transition: all 0.3s ease;
+	  box-shadow:0 0 15px rgba(221, 137, 141, 0.8);;
+	  text-transform: uppercase;
+	}
+
+	.hero-btn a {
+	  text-decoration: none;
+	  color: inherit;
+	  display: inline-block;
+	}
+
+	.hero-btn:hover {
+	  transform: scale(1.07);
+    box-shadow: 0 0 30px rgba(221, 100, 126, 0.8), 0 0 60px rgba(235, 93, 93, 0.6);
+	  background: linear-gradient(90deg, #ec2a4a, #d365bb);
+	}
+
+    nav {
+      width: 100%;
+      padding: 15px 60px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      transition: background 0.3s ease;
+      
+    }
+
+    nav h1 {
+      font-size: 1.6rem;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      color: #ce4c53;
+      margin-top: 2%;
+      margin-right: 2%;
+      letter-spacing: 1px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('https://img.pikbest.com/origin/09/17/89/41kpIkbEsTV83.jpg!bw700') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .hero h2 {
+      z-index: 1;
+      font-size: 3rem;
+      color: #cfafaf;
+      margin-right: 5%;
+      animation: fadeInDown 1s ease;
+    }
+
+
+    .hero p {
+      z-index: 1;
+      max-width: 700px;
+      font-size: 1.2rem;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: #ddd;
+      margin-bottom: 4%;
+          margin-top: 2%;
+      margin-right: 5%;
+      animation: fadeInUp 1.3s ease;
+    }
+
+   
+    footer {
+         background: rgba(0, 0, 0, 0.7);
+         font-family:Georgia, 'Times New Roman', Times, serif;
+   
+      text-align: center;
+	  font-weight:bold;
+      padding: 20px;
+       color: #be6a6a;
+      font-size: 0.9rem;
+    }
+
+    
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 30px;
+      }
+
+      nav h1 {
+        font-size: 1.3rem;
+      }
+
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  
+  <form >
+  <nav id="navbar">
+    <h1> CARSMART <img src="c:\Users\Gokulnath\Downloads\directions_car_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png"> INVENTORY </h1>
+   <button class="hero-btn1"><a href="Regist.html">Register</a></button>
+   <button class="hero-btn"><a href="CarLog.html">Login</a></button>
+  </nav>
+
+  <section class="hero">
+    <h2>Drive Your Dream Car Today</h2>
+    <p>Explore our smart car inventory system — efficient, sleek, and up-to-date with the latest models.</p>
+  </section>
+  </form>
+  
+  <footer>
+    &copy; 2026  CarSmart<img src="c:\Users\Gokulnath\Downloads\directions_car_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png">Inventory. All Rights Reserved.
+  </footer>
+
+ 
+  <script>
+    
+    window.addEventListener("scroll", () => {
+      const navbar = document.getElementById("navbar");
+      navbar.style.background = window.scrollY > 50 
+        ? "rgba(0,0,0,0.9)" 
+        : "rgba(0,0,0,0.7)";
+    });
+  </script>
 </body>
 </html>
